@@ -14,7 +14,7 @@ export async function GET(_: Request, { params }: { params: { code: string } }) 
     })
 
     return NextResponse.redirect(link.targetUrl, 302)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database error:', error)
     return NextResponse.json({ error: 'Database connection failed', details: error.message }, { status: 500 })
   }

@@ -16,7 +16,7 @@ export async function GET() {
         dbType: process.env.DATABASE_URL?.includes('postgresql') ? 'postgres' : 'sqlite'
       }
     })
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ 
       ok: false, 
       version: '1.0',
