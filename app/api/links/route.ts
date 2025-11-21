@@ -22,7 +22,7 @@ export async function GET() {
   try {
     const links = await prisma.link.findMany({ orderBy: { createdAt: 'desc' } })
     return NextResponse.json(links)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database error:', error)
     return NextResponse.json({ error: 'Database connection failed', details: error.message }, { status: 500 })
   }
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
 
     const created = await prisma.link.create({ data: { code, targetUrl: url } })
     return NextResponse.json(created, { status: 201 })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database error:', error)
     return NextResponse.json({ error: 'Database connection failed', details: error.message }, { status: 500 })
   }

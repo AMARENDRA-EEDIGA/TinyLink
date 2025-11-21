@@ -7,7 +7,7 @@ export async function GET(_: Request, { params }: { params: { code: string } }) 
     const link = await prisma.link.findUnique({ where: { code } })
     if (!link) return NextResponse.json({ error: 'Not found' }, { status: 404 })
     return NextResponse.json(link)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database error:', error)
     return NextResponse.json({ error: 'Database connection failed', details: error.message }, { status: 500 })
   }
@@ -20,7 +20,7 @@ export async function DELETE(_: Request, { params }: { params: { code: string } 
     if (!existing) return NextResponse.json({ error: 'Not found' }, { status: 404 })
     await prisma.link.delete({ where: { code } })
     return NextResponse.json({ ok: true })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database error:', error)
     return NextResponse.json({ error: 'Database connection failed', details: error.message }, { status: 500 })
   }
