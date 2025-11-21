@@ -16,7 +16,7 @@ export async function GET() {
         dbUrlPrefix: process.env.DATABASE_URL?.substring(0, 20) + '...'
       }
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database connection test failed:', error)
     return NextResponse.json({ 
       status: 'failed', 
