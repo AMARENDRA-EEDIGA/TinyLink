@@ -96,7 +96,7 @@ export default function Dashboard() {
             />
             <input 
               className="sm:w-40 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-              placeholder="Custom code (optional)" 
+              placeholder="Code (optional)" 
               value={code} 
               onChange={e => setCode(e.target.value)}
               disabled={creating}
